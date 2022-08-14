@@ -1,0 +1,25 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otel-sidecar
+spec:
+  mode: sidecar
+  image: otel/opentelemetry-collector-contrib:latest
+  config: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+    processors:
+    exporters:
+      otlp:
+        endpoint: "http://otel-collector.default.svc.cluster.local:4317"
+        tls:
+          insecure: true
+    service:
+      pipelines:
+        metrics:
+          receivers: [otlp]
+          processors: []
+          exporters: [otlp]

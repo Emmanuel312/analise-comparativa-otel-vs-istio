@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: collector-config
+data:
+  collector.yaml: |
+    receivers:
+        otlp:
+          protocols:
+            grpc:
+            http:
+        hostmetrics:
+          collection_interval: 15s
+          scrapers:
+            cpu:
+            load:
+            memory:
+            disk:
+            filesystem:
+            network:
+            paging:
+            processes:
+  
+    exporters:
+      logging:
+        logLevel: DEBUG
+      prometheus:
+        endpoint: "0.0.0.0:8889"
+  
+    service:
+      pipelines:
+        metrics:
+          receivers: [ otlp, hostmetrics ]
+          exporters: [ logging, prometheus ]
+        traces:
+          receivers: [ otlp ]
+          exporters: [ logging ]
