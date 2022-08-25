@@ -5,6 +5,13 @@ metadata:
 spec:
   mode: sidecar
   image: otel/opentelemetry-collector-contrib:latest
+  resources:
+    limits:
+      memory: "256M"
+      cpu: "0.3"
+    requests:
+      memory: "128M"
+      cpu: "0.1"
   config: |
     receivers:
       otlp:

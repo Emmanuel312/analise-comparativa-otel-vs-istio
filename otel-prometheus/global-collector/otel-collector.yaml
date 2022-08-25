@@ -17,6 +17,13 @@ spec:
         args:
         - --config=/conf/collector.yaml
         image: otel/opentelemetry-collector-contrib:latest
+        resources:
+          limits:
+            memory: "64M"
+            cpu: "1"
+          requests:
+            memory: "32M"
+            cpu: "0.5"
         volumeMounts:
         - mountPath: /conf
           name: collector-config
