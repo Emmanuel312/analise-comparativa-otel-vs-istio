@@ -20,8 +20,8 @@ spec:
           image: ghcr.io/pavolloffay/spring-petclinic:latest
           resources:
             limits:
+              memory: "512M"
+              cpu: "0.5"
+            requests:
               memory: "256M"
               cpu: "0.3"
-            requests:
-              memory: "128M"
-              cpu: "0.1"

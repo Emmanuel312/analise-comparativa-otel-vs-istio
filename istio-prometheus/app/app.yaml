@@ -11,7 +11,19 @@ spec:
     metadata:
       labels:
         app: spring-petclinic
+      annotations:
+        sidecar.istio.io/proxyMemory: "128M"
+        sidecar.istio.io/proxyMemoryLimit: "256M"
+        sidecar.istio.io/proxyCPU: "0.1"
+        sidecar.istio.io/proxyCPULimit: "0.3"
     spec:
       containers:
         - name: app
           image: ghcr.io/pavolloffay/spring-petclinic:latest
+          resources:
+            limits:
+              memory: "512M"
+              cpu: "0.5"
+            requests:
+              memory: "256M"
+              cpu: "0.3"
