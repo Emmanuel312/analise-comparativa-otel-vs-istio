@@ -10,28 +10,18 @@ data:
           protocols:
             grpc:
             http:
-        hostmetrics:
-          collection_interval: 15s
-          scrapers:
-            cpu:
-            load:
-            memory:
-            disk:
-            filesystem:
-            network:
-            paging:
-            processes:
-  
+
     exporters:
       logging:
         logLevel: DEBUG
       prometheus:
         endpoint: "0.0.0.0:8889"
-  
+        resource_to_telemetry_conversion:
+          enabled: true
     service:
       pipelines:
         metrics:
-          receivers: [ otlp, hostmetrics ]
+          receivers: [ otlp ]
           exporters: [ logging, prometheus ]
         traces:
           receivers: [ otlp ]

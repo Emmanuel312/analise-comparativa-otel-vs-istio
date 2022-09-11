@@ -18,6 +18,17 @@ spec:
         protocols:
           grpc:
           http:
+      hostmetrics:
+        collection_interval: 15s
+        scrapers:
+          cpu:
+          load:
+          memory:
+          disk:
+          filesystem:
+          network:
+          paging:
+          processes:
     processors:
     exporters:
       otlp:
@@ -27,6 +38,10 @@ spec:
     service:
       pipelines:
         metrics:
+          receivers: [otlp, hostmetrics]
+          processors: []
+          exporters: [otlp]
+        traces:
           receivers: [otlp]
           processors: []
           exporters: [otlp]

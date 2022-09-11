@@ -10,6 +10,7 @@ k apply -f global-collector/otel-collector-service.yaml
 k apply -f otel-operator/otel-instrumentation.yaml
 k apply -f otel-operator/otel-sidecar.yaml
 k apply -f app/app.yaml
+k port-forward deployments/frontend 8080
 k apply -f prometheus/prometheus-config-map.yaml 
 k apply -f prometheus/prometheus.yaml
 k port-forward deployments/prometheus 9090

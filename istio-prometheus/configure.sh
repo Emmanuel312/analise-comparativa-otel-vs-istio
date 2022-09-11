@@ -3,7 +3,7 @@
 kind create cluster --name istio-prometheus
 k config use-context kind-istio-prometheus
 # install istio and add it in your path 
-istioctl install --set profile=demo -y
+istioctl install --set profile=minimal -y
 k label namespace default istio-injection=enabled
 k apply -f ./app/app.yaml 
 k apply -f ~/istio-1.14.1/samples/addons/prometheus.yaml
