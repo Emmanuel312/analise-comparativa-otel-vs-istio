@@ -103,6 +103,8 @@ spec:
     metadata:
       labels:
         app: checkoutservice
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       serviceAccountName: default
       securityContext:
@@ -262,6 +264,7 @@ spec:
       labels:
         app: frontend
       annotations:
+        sidecar.istio.io/inject: "false"
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
     spec:
       serviceAccountName: default
@@ -446,6 +449,8 @@ spec:
     metadata:
       labels:
         app: productcatalogservice
+      annotations:
+        sidecar.istio.io/inject: "false"      
     spec:
       serviceAccountName: default
       terminationGracePeriodSeconds: 5
@@ -660,6 +665,8 @@ spec:
     metadata:
       labels:
         app: shippingservice
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       serviceAccountName: default
       securityContext:
@@ -730,6 +737,8 @@ spec:
     metadata:
       labels:
         app: redis-cart
+      annotations:
+        sidecar.istio.io/inject: "false"
     spec:
       securityContext:
         fsGroup: 1000

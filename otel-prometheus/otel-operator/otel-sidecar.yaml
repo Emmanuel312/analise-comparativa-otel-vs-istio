@@ -2,6 +2,7 @@ apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
   name: otel-sidecar
+  namespace: sock-shop
 spec:
   mode: sidecar
   image: otel/opentelemetry-collector-contrib:latest

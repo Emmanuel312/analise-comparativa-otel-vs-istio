@@ -2,6 +2,7 @@ apiVersion: opentelemetry.io/v1alpha1
 kind: Instrumentation
 metadata:
   name: otel-instrumentation
+  namespace: sock-shop
 spec:
   env:
     - name: OTEL_EXPORTER_OTLP_ENDPOINT

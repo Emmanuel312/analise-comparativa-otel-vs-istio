@@ -7,9 +7,11 @@ k apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/lat
 k apply -f global-collector/collector-config-map.yaml
 k apply -f global-collector/otel-collector.yaml
 k apply -f global-collector/otel-collector-service.yaml
+k apply -f ./namespaces/sock-shop.yaml
 k apply -f otel-operator/otel-instrumentation.yaml
 k apply -f otel-operator/otel-sidecar.yaml
-k apply -f app/app.yaml
+k apply -f ./app/app-boutique.yaml 
+k apply -f app/app-sock-shop.yaml 
 k port-forward deployments/frontend 8080
 k apply -f prometheus/prometheus-config-map.yaml 
 k apply -f prometheus/prometheus.yaml
