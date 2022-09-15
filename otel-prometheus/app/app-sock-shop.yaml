@@ -85,8 +85,6 @@ spec:
     metadata:
       labels:
         name: carts-db
-      annotations:
-        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: carts-db
@@ -151,9 +149,7 @@ spec:
   template:
     metadata:
       labels:
-        name: catalogue
-      annotations:
-        sidecar.istio.io/inject: "false"  
+        name: catalogue  
     spec:
       containers:
       - name: catalogue
@@ -226,9 +222,7 @@ spec:
   template:
     metadata:
       labels:
-        name: catalogue-db
-      annotations:
-        sidecar.istio.io/inject: "false"  
+        name: catalogue-db  
     spec:
       containers:
       - name: catalogue-db
@@ -280,8 +274,6 @@ spec:
     metadata:
       labels:
         name: front-end
-      annotations:
-        sidecar.istio.io/inject: "false"
     spec:
       containers:
       - name: front-end
@@ -424,9 +416,7 @@ spec:
   template:
     metadata:
       labels:
-        name: orders-db
-      annotations:
-        sidecar.istio.io/inject: "false"  
+        name: orders-db  
     spec:
       containers:
       - name: orders-db
@@ -490,9 +480,7 @@ spec:
   template:
     metadata:
       labels:
-        name: payment
-      annotations:
-        sidecar.istio.io/inject: "false"  
+        name: payment  
     spec:
       containers:
       - name: payment
@@ -620,7 +608,6 @@ spec:
         name: rabbitmq
       annotations:
         prometheus.io/scrape: "false"
-        sidecar.istio.io/inject: "false"  
     spec:
       containers:
       - name: rabbitmq
@@ -703,7 +690,6 @@ spec:
         name: session-db
       annotations:
         prometheus.io.scrape: "false"
-        sidecar.istio.io/inject: "false"  
     spec:
       containers:
       - name: session-db
@@ -834,9 +820,7 @@ spec:
   template:
     metadata:
       labels:
-        name: user
-      annotations:
-        sidecar.istio.io/inject: "false"  
+        name: user  
     spec:
       containers:
       - name: user
@@ -910,9 +894,7 @@ spec:
   template:
     metadata:
       labels:
-        name: user-db
-      annotations:
-        sidecar.istio.io/inject: "false"  
+        name: user-db  
     spec:
       containers:
       - name: user-db
@@ -960,4 +942,18 @@ spec:
     targetPort: 27017
   selector:
     name: user-db
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-db
+  labels:
+    name: user-db
+  namespace: sock-shop
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 27017
+    targetPort: 27017
+  selector:
+    name: user-db

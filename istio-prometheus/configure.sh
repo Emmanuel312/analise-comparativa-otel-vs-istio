@@ -15,3 +15,4 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm install prometheus prometheus-community/kube-prometheus-stack
 # grafana credentials admin:prom-operator
 k port-forward deployments/prometheus-grafana 3000
+
