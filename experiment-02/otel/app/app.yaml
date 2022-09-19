@@ -27,10 +27,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - containerPort: 80
         securityContext:
@@ -92,10 +92,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - name: mongo
           containerPort: 27017
@@ -160,10 +160,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - containerPort: 80
         securityContext:
@@ -230,10 +230,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         env:
           - name: MYSQL_ROOT_PASSWORD
             value: fake_password
@@ -263,28 +263,28 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front-end
+  name: frontend
   namespace: sock-shop
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: front-end
+      name: frontend
   template:
     metadata:
       labels:
-        name: front-end
+        name: frontend
     spec:
       containers:
-      - name: front-end
+      - name: frontend
         image: weaveworksdemos/front-end:0.3.12
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - containerPort: 8079
         env:
@@ -315,11 +315,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: front-end
+  name: frontend
   annotations:
         prometheus.io/scrape: 'true'
   labels:
-    name: front-end
+    name: frontend
   namespace: sock-shop
 spec:
   type: NodePort
@@ -328,7 +328,7 @@ spec:
     targetPort: 8079
     nodePort: 30001
   selector:
-    name: front-end
+    name: frontend
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -359,10 +359,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - containerPort: 80
         securityContext:
@@ -424,10 +424,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - name: mongo
           containerPort: 27017
@@ -488,10 +488,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - containerPort: 80
         securityContext:
@@ -564,10 +564,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - containerPort: 80
       nodeSelector:
@@ -615,10 +615,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - containerPort: 15672
           name: management
@@ -638,10 +638,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         image: kbudde/rabbitmq-exporter
         ports:
         - containerPort: 9090
@@ -697,10 +697,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - name: redis
           containerPort: 6379
@@ -762,10 +762,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - containerPort: 80
         securityContext:
@@ -828,10 +828,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - containerPort: 80
         env:
@@ -902,10 +902,10 @@ spec:
         resources:
           requests:
             cpu: 100m
-            memory: 64Mi
+            memory: 128M
           limits:
-            cpu: 200m
-            memory: 128Mi
+            cpu: 300m
+            memory: 256M
         ports:
         - name: mongo
           containerPort: 27017

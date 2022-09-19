@@ -19,11 +19,11 @@ spec:
         image: otel/opentelemetry-collector-contrib:latest
         resources:
           limits:
-            memory: "1024M"
-            cpu: "1"
+            memory: "128M"
+            cpu: "200m"
           requests:
-            memory: "512M"
-            cpu: "0.5"
+            memory: "64M"
+            cpu: "100m"
         volumeMounts:
         - mountPath: /conf
           name: collector-config
