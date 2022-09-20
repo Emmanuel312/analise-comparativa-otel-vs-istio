@@ -1,0 +1,47 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  name: otel-sidecar
+spec:
+  mode: sidecar
+  image: otel/opentelemetry-collector-contrib:latest
+  resources:
+    limits:
+      memory: "128M"
+      cpu: "200m"
+    requests:
+      memory: "64M"
+      cpu: "100m"  
+  config: |
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+          http:
+      hostmetrics:
+        collection_interval: 15s
+        scrapers:
+          cpu:
+          load:
+          memory:
+          disk:
+          filesystem:
+          network:
+          paging:
+          processes:
+    processors:
+    exporters:
+      otlp:
+        endpoint: "http://otel-collector.default.svc.cluster.local:4317"
+        tls:
+          insecure: true
+    service:
+      pipelines:
+        metrics:
+          receivers: [otlp, hostmetrics]
+          processors: []
+          exporters: [otlp]
+        traces:
+          receivers: [otlp]
+          processors: []
+          exporters: [otlp]
