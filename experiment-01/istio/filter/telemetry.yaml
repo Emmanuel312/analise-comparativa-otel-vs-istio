@@ -1,0 +1,21 @@
+apiVersion: telemetry.istio.io/v1alpha1
+kind: Telemetry
+metadata:
+  name: mesh-default
+  namespace: default
+spec:
+  # no selector specified, applies to all workloads
+  metrics:
+  - providers:
+    - name: stackdriver
+    - name: prometheus
+    - name: envoy
+    overrides:
+    - match:
+        metric: ALL_METRICS
+        mode: CLIENT_AND_SERVER
+      disabled: true
+  accessLogging:
+  - disabled: true
+  tracing:
+  - disableSpanReporting: true
